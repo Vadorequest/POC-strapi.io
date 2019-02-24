@@ -1,3 +1,3 @@
 # tfp-console
 
-A quick description of tfp-console.
+Yarn is not supported
