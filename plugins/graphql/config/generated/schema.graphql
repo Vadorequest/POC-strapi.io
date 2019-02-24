@@ -1,24 +1,3 @@
-type Article {
-  id: ID!
-  created_at: DateTime!
-  updated_at: DateTime!
-  name: String
-  content: String
-}
-
-input ArticleInput {
-  name: String
-  content: String
-}
-
-input createArticleInput {
-  data: ArticleInput
-}
-
-type createArticlePayload {
-  article: Article
-}
-
 input createRoleInput {
   data: RoleInput
 }
@@ -40,14 +19,6 @@ The `DateTime` scalar represents a date and time following the ISO 8601 standard
 """
 scalar DateTime
 
-input deleteArticleInput {
-  where: InputID
-}
-
-type deleteArticlePayload {
-  article: Article
-}
-
 input deleteRoleInput {
   where: InputID
 }
@@ -62,11 +33,6 @@ input deleteUserInput {
 
 type deleteUserPayload {
   user: UsersPermissionsUser
-}
-
-input editArticleInput {
-  name: String
-  content: String
 }
 
 input editFileInput {
@@ -123,13 +89,9 @@ The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://
 """
 scalar JSON
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Article | createArticlePayload | updateArticlePayload | deleteArticlePayload | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload
 
 type Mutation {
-  createArticle(input: createArticleInput): createArticlePayload
-  updateArticle(input: updateArticleInput): updateArticlePayload
-  deleteArticle(input: deleteArticleInput): deleteArticlePayload
-
   """Create a new role"""
   createRole(input: createRoleInput): createRolePayload
 
@@ -151,8 +113,6 @@ type Mutation {
 }
 
 type Query {
-  article(id: ID!): Article
-  articles(sort: String, limit: Int, start: Int, where: JSON): [Article]
   files(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
   role(id: ID!): UsersPermissionsRole
 
@@ -171,15 +131,6 @@ input RoleInput {
   type: String
   permissions: [ID]
   users: [ID]
-}
-
-input updateArticleInput {
-  where: InputID
-  data: editArticleInput
-}
-
-type updateArticlePayload {
-  article: Article
 }
 
 input updateRoleInput {
