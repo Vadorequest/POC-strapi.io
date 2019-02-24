@@ -1,9 +1,9 @@
 {
   "connection": "default",
-  "collectionName": "organizations",
+  "collectionName": "schools",
   "info": {
-    "name": "organization",
-    "description": "A group of schools. Can also be a school."
+    "name": "school",
+    "description": "A school. Belongs to an organization."
   },
   "options": {
     "increments": true,
@@ -24,20 +24,24 @@
       "type": "enumeration",
       "enum": [
         "active",
-        " inactive"
+        "inactive"
       ]
     },
-    "logo": {
+    "programs": {
       "default": "",
       "type": "json"
     },
-    "apps": {
+    "formationTypes": {
       "default": "",
       "type": "json"
     },
-    "schools": {
-      "collection": "school",
-      "via": "organization"
+    "contacts": {
+      "default": "",
+      "type": "json"
+    },
+    "organization": {
+      "model": "organization",
+      "via": "schools"
     }
   }
 }

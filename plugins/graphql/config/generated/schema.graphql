@@ -14,6 +14,14 @@ type createRolePayload {
   role: UsersPermissionsRole
 }
 
+input createSchoolInput {
+  data: SchoolInput
+}
+
+type createSchoolPayload {
+  school: School
+}
+
 input createUserInput {
   data: UserInput
 }
@@ -43,6 +51,14 @@ type deleteRolePayload {
   role: UsersPermissionsRole
 }
 
+input deleteSchoolInput {
+  where: InputID
+}
+
+type deleteSchoolPayload {
+  school: School
+}
+
 input deleteUserInput {
   where: InputID
 }
@@ -70,6 +86,7 @@ input editOrganizationInput {
   state: ENUM_ORGANIZATION_STATE
   logo: JSON
   apps: JSON
+  schools: [ID]
 }
 
 input editRoleInput {
@@ -78,6 +95,16 @@ input editRoleInput {
   type: String
   permissions: [ID]
   users: [ID]
+}
+
+input editSchoolInput {
+  name: String
+  label: String
+  state: ENUM_SCHOOL_STATE
+  programs: JSON
+  formationTypes: JSON
+  contacts: JSON
+  organization: ID
 }
 
 input editUserInput {
@@ -92,6 +119,11 @@ input editUserInput {
 }
 
 enum ENUM_ORGANIZATION_STATE {
+  active
+  inactive
+}
+
+enum ENUM_SCHOOL_STATE {
   active
   inactive
 }
@@ -118,12 +150,15 @@ The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://
 """
 scalar JSON
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Organization | createOrganizationPayload | updateOrganizationPayload | deleteOrganizationPayload | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Organization | createOrganizationPayload | updateOrganizationPayload | deleteOrganizationPayload | School | createSchoolPayload | updateSchoolPayload | deleteSchoolPayload | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload
 
 type Mutation {
   createOrganization(input: createOrganizationInput): createOrganizationPayload
   updateOrganization(input: updateOrganizationInput): updateOrganizationPayload
   deleteOrganization(input: deleteOrganizationInput): deleteOrganizationPayload
+  createSchool(input: createSchoolInput): createSchoolPayload
+  updateSchool(input: updateSchoolInput): updateSchoolPayload
+  deleteSchool(input: deleteSchoolInput): deleteSchoolPayload
 
   """Create a new role"""
   createRole(input: createRoleInput): createRolePayload
@@ -155,6 +190,7 @@ type Organization {
   state: ENUM_ORGANIZATION_STATE
   logo: JSON
   apps: JSON
+  schools(sort: String, limit: Int, start: Int, where: JSON): [School]
 }
 
 input OrganizationInput {
@@ -163,11 +199,14 @@ input OrganizationInput {
   state: ENUM_ORGANIZATION_STATE
   logo: JSON
   apps: JSON
+  schools: [ID]
 }
 
 type Query {
   organization(id: ID!): Organization
   organizations(sort: String, limit: Int, start: Int, where: JSON): [Organization]
+  school(id: ID!): School
+  schools(sort: String, limit: Int, start: Int, where: JSON): [School]
   files(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
   role(id: ID!): UsersPermissionsRole
 
@@ -188,6 +227,30 @@ input RoleInput {
   users: [ID]
 }
 
+"""A school. Belongs to an organization."""
+type School {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String
+  label: String
+  state: ENUM_SCHOOL_STATE
+  programs: JSON
+  formationTypes: JSON
+  contacts: JSON
+  organization: Organization
+}
+
+input SchoolInput {
+  name: String
+  label: String
+  state: ENUM_SCHOOL_STATE
+  programs: JSON
+  formationTypes: JSON
+  contacts: JSON
+  organization: ID
+}
+
 input updateOrganizationInput {
   where: InputID
   data: editOrganizationInput
@@ -204,6 +267,15 @@ input updateRoleInput {
 
 type updateRolePayload {
   role: UsersPermissionsRole
+}
+
+input updateSchoolInput {
+  where: InputID
+  data: editSchoolInput
+}
+
+type updateSchoolPayload {
+  school: School
 }
 
 input updateUserInput {

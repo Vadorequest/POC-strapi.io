@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/organizations": {
+    "/schools": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -12,7 +12,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Organization"
+                    "$ref": "#/components/schemas/School"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Organization"
+          "School"
         ],
         "parameters": [
           {
@@ -195,7 +195,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Organization"
+                  "$ref": "#/components/schemas/School"
                 }
               }
             }
@@ -233,7 +233,7 @@
         },
         "summary": "",
         "tags": [
-          "Organization"
+          "School"
         ],
         "requestBody": {
           "description": "",
@@ -241,14 +241,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewOrganization"
+                "$ref": "#/components/schemas/NewSchool"
               }
             }
           }
         }
       }
     },
-    "/organizations/count": {
+    "/schools/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -300,12 +300,12 @@
         },
         "summary": "",
         "tags": [
-          "Organization"
+          "School"
         ],
         "parameters": []
       }
     },
-    "/organizations/{id}": {
+    "/schools/{id}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -315,7 +315,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Organization"
+                  "$ref": "#/components/schemas/School"
                 }
               }
             }
@@ -353,7 +353,7 @@
         },
         "summary": "",
         "tags": [
-          "Organization"
+          "School"
         ],
         "parameters": [
           {
@@ -377,7 +377,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Organization"
+                  "$ref": "#/components/schemas/School"
                 }
               }
             }
@@ -415,7 +415,7 @@
         },
         "summary": "",
         "tags": [
-          "Organization"
+          "School"
         ],
         "requestBody": {
           "description": "",
@@ -423,7 +423,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewOrganization"
+                "$ref": "#/components/schemas/NewSchool"
               }
             }
           }
@@ -489,7 +489,7 @@
         },
         "summary": "",
         "tags": [
-          "Organization"
+          "School"
         ],
         "parameters": [
           {
@@ -508,7 +508,7 @@
   },
   "components": {
     "schemas": {
-      "Organization": {
+      "School": {
         "required": [
           "id"
         ],
@@ -529,46 +529,47 @@
             "default": "",
             "enum": [
               "active",
-              " inactive"
+              "inactive"
             ]
           },
-          "logo": {
+          "programs": {
             "type": "json",
             "default": ""
           },
-          "apps": {
+          "formationTypes": {
             "type": "json",
             "default": ""
           },
-          "schools": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "name": {
-                  "type": "string"
-                },
-                "label": {
-                  "type": "string"
-                },
-                "state": {
-                  "type": "string"
-                },
-                "programs": {
-                  "type": "json"
-                },
-                "formationTypes": {
-                  "type": "json"
-                },
-                "contacts": {
-                  "type": "json"
-                },
-                "organization": {
+          "contacts": {
+            "type": "json",
+            "default": ""
+          },
+          "organization": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "label": {
+                "type": "string"
+              },
+              "state": {
+                "type": "string"
+              },
+              "logo": {
+                "type": "json"
+              },
+              "apps": {
+                "type": "json"
+              },
+              "schools": {
+                "type": "array",
+                "items": {
                   "type": "string"
                 }
               }
@@ -576,7 +577,7 @@
           }
         }
       },
-      "NewOrganization": {
+      "NewSchool": {
         "properties": {
           "name": {
             "type": "string",
@@ -591,22 +592,23 @@
             "default": "",
             "enum": [
               "active",
-              " inactive"
+              "inactive"
             ]
           },
-          "logo": {
+          "programs": {
             "type": "json",
             "default": ""
           },
-          "apps": {
+          "formationTypes": {
             "type": "json",
             "default": ""
           },
-          "schools": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+          "contacts": {
+            "type": "json",
+            "default": ""
+          },
+          "organization": {
+            "type": "string"
           }
         }
       }
@@ -614,7 +616,7 @@
   },
   "tags": [
     {
-      "name": "Organization"
+      "name": "School"
     }
   ]
 }
