@@ -1,0 +1,39 @@
+{
+  "connection": "default",
+  "collectionName": "organizations",
+  "info": {
+    "name": "organization",
+    "description": "A group of schools. Can also be a school."
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "name": {
+      "default": "",
+      "type": "string"
+    },
+    "label": {
+      "default": "",
+      "type": "string"
+    },
+    "state": {
+      "default": "",
+      "type": "enumeration",
+      "enum": [
+        "active",
+        " inactive"
+      ]
+    },
+    "logo": {
+      "default": "",
+      "type": "json"
+    },
+    "apps": {
+      "default": "",
+      "type": "json"
+    }
+  }
+}
