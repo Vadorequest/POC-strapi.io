@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/schools": {
+    "/studentsolutions": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -12,7 +12,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/School"
+                    "$ref": "#/components/schemas/Studentsolution"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "School"
+          "Studentsolution"
         ],
         "parameters": [
           {
@@ -195,7 +195,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/School"
+                  "$ref": "#/components/schemas/Studentsolution"
                 }
               }
             }
@@ -233,7 +233,7 @@
         },
         "summary": "",
         "tags": [
-          "School"
+          "Studentsolution"
         ],
         "requestBody": {
           "description": "",
@@ -241,14 +241,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewSchool"
+                "$ref": "#/components/schemas/NewStudentsolution"
               }
             }
           }
         }
       }
     },
-    "/schools/count": {
+    "/studentsolutions/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -300,12 +300,12 @@
         },
         "summary": "",
         "tags": [
-          "School"
+          "Studentsolution"
         ],
         "parameters": []
       }
     },
-    "/schools/{id}": {
+    "/studentsolutions/{id}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -315,7 +315,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/School"
+                  "$ref": "#/components/schemas/Studentsolution"
                 }
               }
             }
@@ -353,7 +353,7 @@
         },
         "summary": "",
         "tags": [
-          "School"
+          "Studentsolution"
         ],
         "parameters": [
           {
@@ -377,7 +377,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/School"
+                  "$ref": "#/components/schemas/Studentsolution"
                 }
               }
             }
@@ -415,7 +415,7 @@
         },
         "summary": "",
         "tags": [
-          "School"
+          "Studentsolution"
         ],
         "requestBody": {
           "description": "",
@@ -423,7 +423,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewSchool"
+                "$ref": "#/components/schemas/NewStudentsolution"
               }
             }
           }
@@ -489,7 +489,7 @@
         },
         "summary": "",
         "tags": [
-          "School"
+          "Studentsolution"
         ],
         "parameters": [
           {
@@ -508,7 +508,7 @@
   },
   "components": {
     "schemas": {
-      "School": {
+      "Studentsolution": {
         "required": [
           "id"
         ],
@@ -524,13 +524,76 @@
             "type": "string",
             "default": ""
           },
-          "state": {
+          "source": {
             "type": "string",
             "default": "",
             "enum": [
-              "active",
-              "inactive"
+              "all",
+              "school",
+              "group"
             ]
+          },
+          "enabled": {
+            "type": "boolean",
+            "default": true
+          },
+          "category": {
+            "type": "string",
+            "default": "",
+            "enum": [
+              "borrowingAssistance",
+              "scholarship",
+              "housingAssistance",
+              "tuitionFeeDiscount"
+            ]
+          },
+          "type": {
+            "type": "string",
+            "default": ""
+          },
+          "logo": {
+            "type": "json",
+            "default": ""
+          },
+          "description": {
+            "type": "string",
+            "default": ""
+          },
+          "interestRate": {
+            "type": "string",
+            "default": ""
+          },
+          "perks": {
+            "type": "json",
+            "default": ""
+          },
+          "criteria": {
+            "type": "json",
+            "default": ""
+          },
+          "loanMaxAmount": {
+            "type": "integer",
+            "default": ""
+          },
+          "expirationDate": {
+            "type": "string",
+            "default": ""
+          },
+          "additionalInfoLink": {
+            "type": "json",
+            "default": ""
+          },
+          "additionalDocumentLink": {
+            "type": "json",
+            "default": ""
+          },
+          "specialPartnerOrganization": {
+            "type": "json",
+            "default": ""
+          },
+          "agencies": {
+            "type": "json",
+            "default": ""
           },
           "organization": {
             "required": [
@@ -569,138 +632,92 @@
               }
             }
           },
-          "path": {
-            "type": "string",
-            "default": ""
-          },
-          "labelShort": {
-            "type": "string",
-            "default": ""
-          },
-          "logo": {
-            "type": "json",
-            "default": ""
-          },
-          "apps": {
-            "type": "json",
-            "default": ""
-          },
-          "studentsolutions": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
+          "school": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "label": {
+                "type": "string"
+              },
+              "state": {
+                "type": "string"
+              },
+              "organization": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "labelShort": {
+                "type": "string"
+              },
+              "logo": {
+                "type": "json"
+              },
+              "apps": {
+                "type": "json"
+              },
+              "studentsolutions": {
+                "type": "array",
+                "items": {
                   "type": "string"
-                },
-                "name": {
-                  "type": "string"
-                },
-                "label": {
-                  "type": "string"
-                },
-                "source": {
-                  "type": "string"
-                },
-                "enabled": {
-                  "type": "boolean"
-                },
-                "category": {
-                  "type": "string"
-                },
-                "type": {
-                  "type": "string"
-                },
-                "logo": {
-                  "type": "json"
-                },
-                "description": {
-                  "type": "string"
-                },
-                "interestRate": {
-                  "type": "string"
-                },
-                "perks": {
-                  "type": "json"
-                },
-                "criteria": {
-                  "type": "json"
-                },
-                "loanMaxAmount": {
-                  "type": "integer"
-                },
-                "expirationDate": {
-                  "type": "string"
-                },
-                "additionalInfoLink": {
-                  "type": "json"
-                },
-                "additionalDocumentLink": {
-                  "type": "json"
-                },
-                "specialPartnerOrganization": {
-                  "type": "json"
-                },
-                "agencies": {
-                  "type": "json"
-                },
-                "organization": {
-                  "type": "string"
-                },
-                "school": {
-                  "type": "string"
-                },
-                "campus": {
+                }
+              },
+              "campuses": {
+                "type": "array",
+                "items": {
                   "type": "string"
                 }
               }
             }
           },
-          "campuses": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
-                  "type": "string"
-                },
-                "name": {
-                  "type": "string"
-                },
-                "label": {
-                  "type": "string"
-                },
-                "state": {
-                  "type": "string"
-                },
-                "programs": {
-                  "type": "json"
-                },
-                "contacts": {
-                  "type": "json"
-                },
-                "studentsolutions": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "school": {
-                  "type": "string"
-                },
-                "formationTypes": {
+          "campus": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "label": {
+                "type": "string"
+              },
+              "state": {
+                "type": "string"
+              },
+              "programs": {
+                "type": "json"
+              },
+              "contacts": {
+                "type": "json"
+              },
+              "studentsolutions": {
+                "type": "array",
+                "items": {
                   "type": "string"
                 }
+              },
+              "school": {
+                "type": "string"
+              },
+              "formationTypes": {
+                "type": "string"
               }
             }
           }
         }
       },
-      "NewSchool": {
+      "NewStudentsolution": {
         "properties": {
           "name": {
             "type": "string",
@@ -710,22 +727,30 @@
             "type": "string",
             "default": ""
           },
-          "state": {
+          "source": {
             "type": "string",
             "default": "",
             "enum": [
-              "active",
-              "inactive"
+              "all",
+              "school",
+              "group"
             ]
           },
-          "organization": {
-            "type": "string"
+          "enabled": {
+            "type": "boolean",
+            "default": true
           },
-          "path": {
+          "category": {
             "type": "string",
-            "default": ""
+            "default": "",
+            "enum": [
+              "borrowingAssistance",
+              "scholarship",
+              "housingAssistance",
+              "tuitionFeeDiscount"
+            ]
           },
-          "labelShort": {
+          "type": {
             "type": "string",
             "default": ""
           },
@@ -733,21 +758,54 @@
             "type": "json",
             "default": ""
           },
-          "apps": {
+          "description": {
+            "type": "string",
+            "default": ""
+          },
+          "interestRate": {
+            "type": "string",
+            "default": ""
+          },
+          "perks": {
             "type": "json",
             "default": ""
           },
-          "studentsolutions": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+          "criteria": {
+            "type": "json",
+            "default": ""
           },
-          "campuses": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+          "loanMaxAmount": {
+            "type": "integer",
+            "default": ""
+          },
+          "expirationDate": {
+            "type": "string",
+            "default": ""
+          },
+          "additionalInfoLink": {
+            "type": "json",
+            "default": ""
+          },
+          "additionalDocumentLink": {
+            "type": "json",
+            "default": ""
+          },
+          "specialPartnerOrganization": {
+            "type": "json",
+            "default": ""
+          },
+          "agencies": {
+            "type": "json",
+            "default": ""
+          },
+          "organization": {
+            "type": "string"
+          },
+          "school": {
+            "type": "string"
+          },
+          "campus": {
+            "type": "string"
           }
         }
       }
@@ -755,7 +813,7 @@
   },
   "tags": [
     {
-      "name": "School"
+      "name": "Studentsolution"
     }
   ]
 }

@@ -1,3 +1,37 @@
+"""A campus. Belongs to a School."""
+type Campus {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String
+  label: String
+  state: ENUM_CAMPUS_STATE
+  programs: JSON
+  contacts: JSON
+  school: School
+  formationTypes: String
+  studentsolutions(sort: String, limit: Int, start: Int, where: JSON): [Studentsolution]
+}
+
+input CampusInput {
+  name: String
+  label: String
+  state: ENUM_CAMPUS_STATE
+  programs: JSON
+  contacts: JSON
+  studentsolutions: [ID]
+  school: ID
+  formationTypes: String
+}
+
+input createCampusInput {
+  data: CampusInput
+}
+
+type createCampusPayload {
+  campus: Campus
+}
+
 input createOrganizationInput {
   data: OrganizationInput
 }
@@ -22,6 +56,14 @@ type createSchoolPayload {
   school: School
 }
 
+input createStudentsolutionInput {
+  data: StudentsolutionInput
+}
+
+type createStudentsolutionPayload {
+  studentsolution: Studentsolution
+}
+
 input createUserInput {
   data: UserInput
 }
@@ -34,6 +76,14 @@ type createUserPayload {
 The `DateTime` scalar represents a date and time following the ISO 8601 standard
 """
 scalar DateTime
+
+input deleteCampusInput {
+  where: InputID
+}
+
+type deleteCampusPayload {
+  campus: Campus
+}
 
 input deleteOrganizationInput {
   where: InputID
@@ -59,12 +109,31 @@ type deleteSchoolPayload {
   school: School
 }
 
+input deleteStudentsolutionInput {
+  where: InputID
+}
+
+type deleteStudentsolutionPayload {
+  studentsolution: Studentsolution
+}
+
 input deleteUserInput {
   where: InputID
 }
 
 type deleteUserPayload {
   user: UsersPermissionsUser
+}
+
+input editCampusInput {
+  name: String
+  label: String
+  state: ENUM_CAMPUS_STATE
+  programs: JSON
+  contacts: JSON
+  studentsolutions: [ID]
+  school: ID
+  formationTypes: String
 }
 
 input editFileInput {
@@ -87,6 +156,7 @@ input editOrganizationInput {
   logo: JSON
   apps: JSON
   schools: [ID]
+  studentsolutions: [ID]
 }
 
 input editRoleInput {
@@ -101,10 +171,36 @@ input editSchoolInput {
   name: String
   label: String
   state: ENUM_SCHOOL_STATE
-  programs: JSON
-  formationTypes: JSON
-  contacts: JSON
   organization: ID
+  path: String
+  labelShort: String
+  logo: JSON
+  apps: JSON
+  studentsolutions: [ID]
+  campuses: [ID]
+}
+
+input editStudentsolutionInput {
+  name: String
+  label: String
+  source: ENUM_STUDENTSOLUTION_SOURCE
+  enabled: Boolean
+  category: ENUM_STUDENTSOLUTION_CATEGORY
+  type: String
+  logo: JSON
+  description: String
+  interestRate: String
+  perks: JSON
+  criteria: JSON
+  loanMaxAmount: Int
+  expirationDate: DateTime
+  additionalInfoLink: JSON
+  additionalDocumentLink: JSON
+  specialPartnerOrganization: JSON
+  agencies: JSON
+  organization: ID
+  school: ID
+  campus: ID
 }
 
 input editUserInput {
@@ -118,6 +214,11 @@ input editUserInput {
   role: ID
 }
 
+enum ENUM_CAMPUS_STATE {
+  active
+  inactive
+}
+
 enum ENUM_ORGANIZATION_STATE {
   active
   inactive
@@ -126,6 +227,19 @@ enum ENUM_ORGANIZATION_STATE {
 enum ENUM_SCHOOL_STATE {
   active
   inactive
+}
+
+enum ENUM_STUDENTSOLUTION_CATEGORY {
+  borrowingAssistance
+  scholarship
+  housingAssistance
+  tuitionFeeDiscount
+}
+
+enum ENUM_STUDENTSOLUTION_SOURCE {
+  all
+  school
+  group
 }
 
 input FileInput {
@@ -150,15 +264,21 @@ The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://
 """
 scalar JSON
 
-union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Organization | createOrganizationPayload | updateOrganizationPayload | deleteOrganizationPayload | School | createSchoolPayload | updateSchoolPayload | deleteSchoolPayload | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload
+union Morph = UsersPermissionsMe | UsersPermissionsMeRole | Campus | createCampusPayload | updateCampusPayload | deleteCampusPayload | Organization | createOrganizationPayload | updateOrganizationPayload | deleteOrganizationPayload | School | createSchoolPayload | updateSchoolPayload | deleteSchoolPayload | Studentsolution | createStudentsolutionPayload | updateStudentsolutionPayload | deleteStudentsolutionPayload | UploadFile | UsersPermissionsPermission | UsersPermissionsRole | createRolePayload | updateRolePayload | deleteRolePayload | UsersPermissionsUser | createUserPayload | updateUserPayload | deleteUserPayload
 
 type Mutation {
+  createCampus(input: createCampusInput): createCampusPayload
+  updateCampus(input: updateCampusInput): updateCampusPayload
+  deleteCampus(input: deleteCampusInput): deleteCampusPayload
   createOrganization(input: createOrganizationInput): createOrganizationPayload
   updateOrganization(input: updateOrganizationInput): updateOrganizationPayload
   deleteOrganization(input: deleteOrganizationInput): deleteOrganizationPayload
   createSchool(input: createSchoolInput): createSchoolPayload
   updateSchool(input: updateSchoolInput): updateSchoolPayload
   deleteSchool(input: deleteSchoolInput): deleteSchoolPayload
+  createStudentsolution(input: createStudentsolutionInput): createStudentsolutionPayload
+  updateStudentsolution(input: updateStudentsolutionInput): updateStudentsolutionPayload
+  deleteStudentsolution(input: deleteStudentsolutionInput): deleteStudentsolutionPayload
 
   """Create a new role"""
   createRole(input: createRoleInput): createRolePayload
@@ -191,6 +311,7 @@ type Organization {
   logo: JSON
   apps: JSON
   schools(sort: String, limit: Int, start: Int, where: JSON): [School]
+  studentsolutions(sort: String, limit: Int, start: Int, where: JSON): [Studentsolution]
 }
 
 input OrganizationInput {
@@ -200,13 +321,18 @@ input OrganizationInput {
   logo: JSON
   apps: JSON
   schools: [ID]
+  studentsolutions: [ID]
 }
 
 type Query {
+  campus(id: ID!): Campus
+  campuses(sort: String, limit: Int, start: Int, where: JSON): [Campus]
   organization(id: ID!): Organization
   organizations(sort: String, limit: Int, start: Int, where: JSON): [Organization]
   school(id: ID!): School
   schools(sort: String, limit: Int, start: Int, where: JSON): [School]
+  studentsolution(id: ID!): Studentsolution
+  studentsolutions(sort: String, limit: Int, start: Int, where: JSON): [Studentsolution]
   files(sort: String, limit: Int, start: Int, where: JSON): [UploadFile]
   role(id: ID!): UsersPermissionsRole
 
@@ -235,20 +361,87 @@ type School {
   name: String
   label: String
   state: ENUM_SCHOOL_STATE
-  programs: JSON
-  formationTypes: JSON
-  contacts: JSON
   organization: Organization
+  path: String
+  labelShort: String
+  logo: JSON
+  apps: JSON
+  studentsolutions(sort: String, limit: Int, start: Int, where: JSON): [Studentsolution]
+  campuses(sort: String, limit: Int, start: Int, where: JSON): [Campus]
 }
 
 input SchoolInput {
   name: String
   label: String
   state: ENUM_SCHOOL_STATE
-  programs: JSON
-  formationTypes: JSON
-  contacts: JSON
   organization: ID
+  path: String
+  labelShort: String
+  logo: JSON
+  apps: JSON
+  studentsolutions: [ID]
+  campuses: [ID]
+}
+
+"""
+A solution for students. A solution is typed by "category" and "type".
+"""
+type Studentsolution {
+  id: ID!
+  created_at: DateTime!
+  updated_at: DateTime!
+  name: String
+  label: String
+  source: ENUM_STUDENTSOLUTION_SOURCE
+  enabled: Boolean
+  category: ENUM_STUDENTSOLUTION_CATEGORY
+  type: String
+  logo: JSON
+  description: String
+  interestRate: String
+  perks: JSON
+  criteria: JSON
+  loanMaxAmount: Int
+  expirationDate: DateTime
+  additionalInfoLink: JSON
+  additionalDocumentLink: JSON
+  specialPartnerOrganization: JSON
+  agencies: JSON
+  organization: Organization
+  school: School
+  campus: Campus
+}
+
+input StudentsolutionInput {
+  name: String
+  label: String
+  source: ENUM_STUDENTSOLUTION_SOURCE
+  enabled: Boolean
+  category: ENUM_STUDENTSOLUTION_CATEGORY
+  type: String
+  logo: JSON
+  description: String
+  interestRate: String
+  perks: JSON
+  criteria: JSON
+  loanMaxAmount: Int
+  expirationDate: DateTime
+  additionalInfoLink: JSON
+  additionalDocumentLink: JSON
+  specialPartnerOrganization: JSON
+  agencies: JSON
+  organization: ID
+  school: ID
+  campus: ID
+}
+
+input updateCampusInput {
+  where: InputID
+  data: editCampusInput
+}
+
+type updateCampusPayload {
+  campus: Campus
 }
 
 input updateOrganizationInput {
@@ -276,6 +469,15 @@ input updateSchoolInput {
 
 type updateSchoolPayload {
   school: School
+}
+
+input updateStudentsolutionInput {
+  where: InputID
+  data: editStudentsolutionInput
+}
+
+type updateStudentsolutionPayload {
+  studentsolution: Studentsolution
 }
 
 input updateUserInput {

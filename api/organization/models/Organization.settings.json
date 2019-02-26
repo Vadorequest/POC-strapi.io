@@ -38,6 +38,10 @@
     "schools": {
       "collection": "school",
       "via": "organization"
+    },
+    "studentsolutions": {
+      "collection": "studentsolution",
+      "via": "organization"
     }
   }
 }

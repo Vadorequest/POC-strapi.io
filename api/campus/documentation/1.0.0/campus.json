@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/schools": {
+    "/campuses": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -12,7 +12,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/School"
+                    "$ref": "#/components/schemas/Campus"
                   }
                 }
               }
@@ -51,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "School"
+          "Campus"
         ],
         "parameters": [
           {
@@ -195,7 +195,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/School"
+                  "$ref": "#/components/schemas/Campus"
                 }
               }
             }
@@ -233,7 +233,7 @@
         },
         "summary": "",
         "tags": [
-          "School"
+          "Campus"
         ],
         "requestBody": {
           "description": "",
@@ -241,14 +241,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewSchool"
+                "$ref": "#/components/schemas/NewCampus"
               }
             }
           }
         }
       }
     },
-    "/schools/count": {
+    "/campuses/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -300,12 +300,12 @@
         },
         "summary": "",
         "tags": [
-          "School"
+          "Campus"
         ],
         "parameters": []
       }
     },
-    "/schools/{id}": {
+    "/campuses/{id}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -315,7 +315,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/School"
+                  "$ref": "#/components/schemas/Campus"
                 }
               }
             }
@@ -353,7 +353,7 @@
         },
         "summary": "",
         "tags": [
-          "School"
+          "Campus"
         ],
         "parameters": [
           {
@@ -377,7 +377,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/School"
+                  "$ref": "#/components/schemas/Campus"
                 }
               }
             }
@@ -415,7 +415,7 @@
         },
         "summary": "",
         "tags": [
-          "School"
+          "Campus"
         ],
         "requestBody": {
           "description": "",
@@ -423,7 +423,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewSchool"
+                "$ref": "#/components/schemas/NewCampus"
               }
             }
           }
@@ -489,7 +489,7 @@
         },
         "summary": "",
         "tags": [
-          "School"
+          "Campus"
         ],
         "parameters": [
           {
@@ -508,7 +508,7 @@
   },
   "components": {
     "schemas": {
-      "School": {
+      "Campus": {
         "required": [
           "id"
         ],
@@ -532,56 +532,11 @@
               "inactive"
             ]
           },
-          "organization": {
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "name": {
-                "type": "string"
-              },
-              "label": {
-                "type": "string"
-              },
-              "state": {
-                "type": "string"
-              },
-              "logo": {
-                "type": "json"
-              },
-              "apps": {
-                "type": "json"
-              },
-              "schools": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "studentsolutions": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              }
-            }
-          },
-          "path": {
-            "type": "string",
-            "default": ""
-          },
-          "labelShort": {
-            "type": "string",
-            "default": ""
-          },
-          "logo": {
+          "programs": {
             "type": "json",
             "default": ""
           },
-          "apps": {
+          "contacts": {
             "type": "json",
             "default": ""
           },
@@ -658,49 +613,59 @@
               }
             }
           },
-          "campuses": {
-            "type": "array",
-            "items": {
-              "required": [
-                "id"
-              ],
-              "properties": {
-                "id": {
+          "school": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "label": {
+                "type": "string"
+              },
+              "state": {
+                "type": "string"
+              },
+              "organization": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "labelShort": {
+                "type": "string"
+              },
+              "logo": {
+                "type": "json"
+              },
+              "apps": {
+                "type": "json"
+              },
+              "studentsolutions": {
+                "type": "array",
+                "items": {
                   "type": "string"
-                },
-                "name": {
-                  "type": "string"
-                },
-                "label": {
-                  "type": "string"
-                },
-                "state": {
-                  "type": "string"
-                },
-                "programs": {
-                  "type": "json"
-                },
-                "contacts": {
-                  "type": "json"
-                },
-                "studentsolutions": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                },
-                "school": {
-                  "type": "string"
-                },
-                "formationTypes": {
+                }
+              },
+              "campuses": {
+                "type": "array",
+                "items": {
                   "type": "string"
                 }
               }
             }
+          },
+          "formationTypes": {
+            "type": "string",
+            "default": ""
           }
         }
       },
-      "NewSchool": {
+      "NewCampus": {
         "properties": {
           "name": {
             "type": "string",
@@ -718,22 +683,11 @@
               "inactive"
             ]
           },
-          "organization": {
-            "type": "string"
-          },
-          "path": {
-            "type": "string",
-            "default": ""
-          },
-          "labelShort": {
-            "type": "string",
-            "default": ""
-          },
-          "logo": {
+          "programs": {
             "type": "json",
             "default": ""
           },
-          "apps": {
+          "contacts": {
             "type": "json",
             "default": ""
           },
@@ -743,11 +697,12 @@
               "type": "string"
             }
           },
-          "campuses": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
+          "school": {
+            "type": "string"
+          },
+          "formationTypes": {
+            "type": "string",
+            "default": ""
           }
         }
       }
@@ -755,7 +710,7 @@
   },
   "tags": [
     {
-      "name": "School"
+      "name": "Campus"
     }
   ]
 }

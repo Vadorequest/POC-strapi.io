@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/studentsolutions",
+      "handler": "Studentsolution.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/studentsolutions/count",
+      "handler": "Studentsolution.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/studentsolutions/:id",
+      "handler": "Studentsolution.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/studentsolutions",
+      "handler": "Studentsolution.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/studentsolutions/:id",
+      "handler": "Studentsolution.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/studentsolutions/:id",
+      "handler": "Studentsolution.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

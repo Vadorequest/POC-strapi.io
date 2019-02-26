@@ -1,0 +1,106 @@
+{
+  "connection": "default",
+  "collectionName": "studentsolutions",
+  "info": {
+    "name": "studentsolution",
+    "description": "A solution for students. A solution is typed by \"category\" and \"type\"."
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "name": {
+      "default": "",
+      "type": "string"
+    },
+    "label": {
+      "default": "",
+      "type": "string"
+    },
+    "source": {
+      "default": "",
+      "type": "enumeration",
+      "enum": [
+        "all",
+        "school",
+        "group"
+      ]
+    },
+    "enabled": {
+      "default": true,
+      "type": "boolean"
+    },
+    "category": {
+      "default": "",
+      "type": "enumeration",
+      "enum": [
+        "borrowingAssistance",
+        "scholarship",
+        "housingAssistance",
+        "tuitionFeeDiscount"
+      ]
+    },
+    "type": {
+      "default": "",
+      "type": "string"
+    },
+    "logo": {
+      "default": "",
+      "type": "json"
+    },
+    "description": {
+      "default": "",
+      "type": "text"
+    },
+    "interestRate": {
+      "default": "",
+      "type": "string"
+    },
+    "perks": {
+      "default": "",
+      "type": "json"
+    },
+    "criteria": {
+      "default": "",
+      "type": "json"
+    },
+    "loanMaxAmount": {
+      "default": "",
+      "type": "integer"
+    },
+    "expirationDate": {
+      "default": "",
+      "type": "date"
+    },
+    "additionalInfoLink": {
+      "default": "",
+      "type": "json"
+    },
+    "additionalDocumentLink": {
+      "default": "",
+      "type": "json"
+    },
+    "specialPartnerOrganization": {
+      "default": "",
+      "type": "json"
+    },
+    "agencies": {
+      "default": "",
+      "type": "json"
+    },
+    "organization": {
+      "model": "organization",
+      "via": "studentsolutions"
+    },
+    "school": {
+      "model": "school",
+      "via": "studentsolutions"
+    },
+    "campus": {
+      "model": "campus",
+      "via": "studentsolutions"
+    }
+  }
+}

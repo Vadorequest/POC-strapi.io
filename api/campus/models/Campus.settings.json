@@ -1,9 +1,9 @@
 {
   "connection": "default",
-  "collectionName": "schools",
+  "collectionName": "campuses",
   "info": {
-    "name": "school",
-    "description": "A school. Belongs to an organization."
+    "name": "campus",
+    "description": "A campus. Belongs to a School."
   },
   "options": {
     "increments": true,
@@ -27,33 +27,25 @@
         "inactive"
       ]
     },
-    "organization": {
-      "model": "organization",
-      "via": "schools"
-    },
-    "path": {
-      "default": "",
-      "type": "string"
-    },
-    "labelShort": {
-      "default": "",
-      "type": "string"
-    },
-    "logo": {
+    "programs": {
       "default": "",
       "type": "json"
     },
-    "apps": {
+    "contacts": {
       "default": "",
       "type": "json"
     },
     "studentsolutions": {
       "collection": "studentsolution",
-      "via": "school"
+      "via": "campus"
     },
-    "campuses": {
-      "collection": "campus",
-      "via": "school"
+    "school": {
+      "model": "school",
+      "via": "campuses"
+    },
+    "formationTypes": {
+      "default": "",
+      "type": "text"
     }
   }
 }

@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "02/24/2019 7:14:13 PM"
+    "x-generation-date": "02/24/2019 10:07:52 PM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -44,6 +44,511 @@
     }
   ],
   "paths": {
+    "/campuses": {
+      "get": {
+        "deprecated": false,
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Campus"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Campus"
+        ],
+        "parameters": [
+          {
+            "name": "_limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of results possible",
+            "schema": {
+              "type": "integer"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_sort",
+            "in": "query",
+            "required": false,
+            "description": "Sort according to a specific field.",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_start",
+            "in": "query",
+            "required": false,
+            "description": "Skip a specific number of entries (especially useful for pagination)",
+            "schema": {
+              "type": "integer"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "=",
+            "in": "query",
+            "required": false,
+            "description": "Get entries that matches exactly your input",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_ne",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are not equals to something",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_lt",
+            "in": "query",
+            "required": false,
+            "description": "Get record that are lower than a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_lte",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are lower than or equal to a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_gt",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are greater than a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_gte",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are greater than  or equal a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_contains",
+            "in": "query",
+            "required": false,
+            "description": "Get records that contains a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_containss",
+            "in": "query",
+            "required": false,
+            "description": "Get records that contains (case sensitive) a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_in",
+            "in": "query",
+            "required": false,
+            "description": "Get records that matches any value in the array of values",
+            "schema": {
+              "type": "array"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_nin",
+            "in": "query",
+            "required": false,
+            "description": "Get records that doesn't match any value in the array of values",
+            "schema": {
+              "type": "array"
+            },
+            "deprecated": false
+          }
+        ]
+      },
+      "post": {
+        "deprecated": false,
+        "description": "Create a new record",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Campus"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Campus"
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewCampus"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/campuses/count": {
+      "get": {
+        "deprecated": false,
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "count": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Campus"
+        ],
+        "parameters": []
+      }
+    },
+    "/campuses/{id}": {
+      "get": {
+        "deprecated": false,
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Campus"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Campus"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "put": {
+        "deprecated": false,
+        "description": "Update a record",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Campus"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Campus"
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewCampus"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "delete": {
+        "deprecated": false,
+        "description": "Delete a record",
+        "responses": {
+          "200": {
+            "description": "deletes a single record based on the ID supplied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Campus"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
     "/organizations": {
       "get": {
         "deprecated": false,
@@ -1039,6 +1544,511 @@
         "summary": "",
         "tags": [
           "School"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/studentsolutions": {
+      "get": {
+        "deprecated": false,
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Studentsolution"
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Studentsolution"
+        ],
+        "parameters": [
+          {
+            "name": "_limit",
+            "in": "query",
+            "required": false,
+            "description": "Maximum number of results possible",
+            "schema": {
+              "type": "integer"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_sort",
+            "in": "query",
+            "required": false,
+            "description": "Sort according to a specific field.",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_start",
+            "in": "query",
+            "required": false,
+            "description": "Skip a specific number of entries (especially useful for pagination)",
+            "schema": {
+              "type": "integer"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "=",
+            "in": "query",
+            "required": false,
+            "description": "Get entries that matches exactly your input",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_ne",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are not equals to something",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_lt",
+            "in": "query",
+            "required": false,
+            "description": "Get record that are lower than a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_lte",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are lower than or equal to a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_gt",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are greater than a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_gte",
+            "in": "query",
+            "required": false,
+            "description": "Get records that are greater than  or equal a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_contains",
+            "in": "query",
+            "required": false,
+            "description": "Get records that contains a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_containss",
+            "in": "query",
+            "required": false,
+            "description": "Get records that contains (case sensitive) a value",
+            "schema": {
+              "type": "string"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_in",
+            "in": "query",
+            "required": false,
+            "description": "Get records that matches any value in the array of values",
+            "schema": {
+              "type": "array"
+            },
+            "deprecated": false
+          },
+          {
+            "name": "_nin",
+            "in": "query",
+            "required": false,
+            "description": "Get records that doesn't match any value in the array of values",
+            "schema": {
+              "type": "array"
+            },
+            "deprecated": false
+          }
+        ]
+      },
+      "post": {
+        "deprecated": false,
+        "description": "Create a new record",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Studentsolution"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Studentsolution"
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewStudentsolution"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/studentsolutions/count": {
+      "get": {
+        "deprecated": false,
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "count": {
+                      "type": "integer"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Studentsolution"
+        ],
+        "parameters": []
+      }
+    },
+    "/studentsolutions/{id}": {
+      "get": {
+        "deprecated": false,
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Studentsolution"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Studentsolution"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "put": {
+        "deprecated": false,
+        "description": "Update a record",
+        "responses": {
+          "200": {
+            "description": "response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Studentsolution"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Studentsolution"
+        ],
+        "requestBody": {
+          "description": "",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewStudentsolution"
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "",
+            "deprecated": false,
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "delete": {
+        "deprecated": false,
+        "description": "Delete a record",
+        "responses": {
+          "200": {
+            "description": "deletes a single record based on the ID supplied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "integer",
+                  "format": "int64"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "unexpected error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "summary": "",
+        "tags": [
+          "Studentsolution"
         ],
         "parameters": [
           {
@@ -3110,6 +4120,204 @@
   },
   "components": {
     "schemas": {
+      "Campus": {
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "default": ""
+          },
+          "label": {
+            "type": "string",
+            "default": ""
+          },
+          "state": {
+            "type": "string",
+            "default": "",
+            "enum": [
+              "active",
+              "inactive"
+            ]
+          },
+          "programs": {
+            "type": "json",
+            "default": ""
+          },
+          "contacts": {
+            "type": "json",
+            "default": ""
+          },
+          "studentsolutions": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string"
+                },
+                "enabled": {
+                  "type": "boolean"
+                },
+                "category": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "logo": {
+                  "type": "json"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "interestRate": {
+                  "type": "string"
+                },
+                "perks": {
+                  "type": "json"
+                },
+                "criteria": {
+                  "type": "json"
+                },
+                "loanMaxAmount": {
+                  "type": "integer"
+                },
+                "expirationDate": {
+                  "type": "string"
+                },
+                "additionalInfoLink": {
+                  "type": "json"
+                },
+                "additionalDocumentLink": {
+                  "type": "json"
+                },
+                "specialPartnerOrganization": {
+                  "type": "json"
+                },
+                "agencies": {
+                  "type": "json"
+                },
+                "organization": {
+                  "type": "string"
+                },
+                "school": {
+                  "type": "string"
+                },
+                "campus": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "school": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "label": {
+                "type": "string"
+              },
+              "state": {
+                "type": "string"
+              },
+              "organization": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "labelShort": {
+                "type": "string"
+              },
+              "logo": {
+                "type": "json"
+              },
+              "apps": {
+                "type": "json"
+              },
+              "studentsolutions": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "campuses": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "formationTypes": {
+            "type": "string",
+            "default": ""
+          }
+        }
+      },
+      "NewCampus": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "default": ""
+          },
+          "label": {
+            "type": "string",
+            "default": ""
+          },
+          "state": {
+            "type": "string",
+            "default": "",
+            "enum": [
+              "active",
+              "inactive"
+            ]
+          },
+          "programs": {
+            "type": "json",
+            "default": ""
+          },
+          "contacts": {
+            "type": "json",
+            "default": ""
+          },
+          "studentsolutions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "school": {
+            "type": "string"
+          },
+          "formationTypes": {
+            "type": "string",
+            "default": ""
+          }
+        }
+      },
       "Organization": {
         "required": [
           "id"
@@ -3161,16 +4369,104 @@
                 "state": {
                   "type": "string"
                 },
-                "programs": {
+                "organization": {
+                  "type": "string"
+                },
+                "path": {
+                  "type": "string"
+                },
+                "labelShort": {
+                  "type": "string"
+                },
+                "logo": {
                   "type": "json"
                 },
-                "formationTypes": {
+                "apps": {
                   "type": "json"
                 },
-                "contacts": {
+                "studentsolutions": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "campuses": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "studentsolutions": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string"
+                },
+                "enabled": {
+                  "type": "boolean"
+                },
+                "category": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "logo": {
+                  "type": "json"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "interestRate": {
+                  "type": "string"
+                },
+                "perks": {
+                  "type": "json"
+                },
+                "criteria": {
+                  "type": "json"
+                },
+                "loanMaxAmount": {
+                  "type": "integer"
+                },
+                "expirationDate": {
+                  "type": "string"
+                },
+                "additionalInfoLink": {
+                  "type": "json"
+                },
+                "additionalDocumentLink": {
+                  "type": "json"
+                },
+                "specialPartnerOrganization": {
+                  "type": "json"
+                },
+                "agencies": {
                   "type": "json"
                 },
                 "organization": {
+                  "type": "string"
+                },
+                "school": {
+                  "type": "string"
+                },
+                "campus": {
                   "type": "string"
                 }
               }
@@ -3209,6 +4505,12 @@
             "items": {
               "type": "string"
             }
+          },
+          "studentsolutions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       },
@@ -3236,15 +4538,309 @@
               "inactive"
             ]
           },
-          "programs": {
+          "organization": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "label": {
+                "type": "string"
+              },
+              "state": {
+                "type": "string"
+              },
+              "logo": {
+                "type": "json"
+              },
+              "apps": {
+                "type": "json"
+              },
+              "schools": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "studentsolutions": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "path": {
+            "type": "string",
+            "default": ""
+          },
+          "labelShort": {
+            "type": "string",
+            "default": ""
+          },
+          "logo": {
             "type": "json",
             "default": ""
           },
-          "formationTypes": {
+          "apps": {
             "type": "json",
             "default": ""
           },
-          "contacts": {
+          "studentsolutions": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string"
+                },
+                "enabled": {
+                  "type": "boolean"
+                },
+                "category": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "logo": {
+                  "type": "json"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "interestRate": {
+                  "type": "string"
+                },
+                "perks": {
+                  "type": "json"
+                },
+                "criteria": {
+                  "type": "json"
+                },
+                "loanMaxAmount": {
+                  "type": "integer"
+                },
+                "expirationDate": {
+                  "type": "string"
+                },
+                "additionalInfoLink": {
+                  "type": "json"
+                },
+                "additionalDocumentLink": {
+                  "type": "json"
+                },
+                "specialPartnerOrganization": {
+                  "type": "json"
+                },
+                "agencies": {
+                  "type": "json"
+                },
+                "organization": {
+                  "type": "string"
+                },
+                "school": {
+                  "type": "string"
+                },
+                "campus": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "campuses": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                },
+                "state": {
+                  "type": "string"
+                },
+                "programs": {
+                  "type": "json"
+                },
+                "contacts": {
+                  "type": "json"
+                },
+                "studentsolutions": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "school": {
+                  "type": "string"
+                },
+                "formationTypes": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "NewSchool": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "default": ""
+          },
+          "label": {
+            "type": "string",
+            "default": ""
+          },
+          "state": {
+            "type": "string",
+            "default": "",
+            "enum": [
+              "active",
+              "inactive"
+            ]
+          },
+          "organization": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string",
+            "default": ""
+          },
+          "labelShort": {
+            "type": "string",
+            "default": ""
+          },
+          "logo": {
+            "type": "json",
+            "default": ""
+          },
+          "apps": {
+            "type": "json",
+            "default": ""
+          },
+          "studentsolutions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "campuses": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "Studentsolution": {
+        "required": [
+          "id"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "default": ""
+          },
+          "label": {
+            "type": "string",
+            "default": ""
+          },
+          "source": {
+            "type": "string",
+            "default": "",
+            "enum": [
+              "all",
+              "school",
+              "group"
+            ]
+          },
+          "enabled": {
+            "type": "boolean",
+            "default": true
+          },
+          "category": {
+            "type": "string",
+            "default": "",
+            "enum": [
+              "borrowingAssistance",
+              "scholarship",
+              "housingAssistance",
+              "tuitionFeeDiscount"
+            ]
+          },
+          "type": {
+            "type": "string",
+            "default": ""
+          },
+          "logo": {
+            "type": "json",
+            "default": ""
+          },
+          "description": {
+            "type": "string",
+            "default": ""
+          },
+          "interestRate": {
+            "type": "string",
+            "default": ""
+          },
+          "perks": {
+            "type": "json",
+            "default": ""
+          },
+          "criteria": {
+            "type": "json",
+            "default": ""
+          },
+          "loanMaxAmount": {
+            "type": "integer",
+            "default": ""
+          },
+          "expirationDate": {
+            "type": "string",
+            "default": ""
+          },
+          "additionalInfoLink": {
+            "type": "json",
+            "default": ""
+          },
+          "additionalDocumentLink": {
+            "type": "json",
+            "default": ""
+          },
+          "specialPartnerOrganization": {
+            "type": "json",
+            "default": ""
+          },
+          "agencies": {
             "type": "json",
             "default": ""
           },
@@ -3276,12 +4872,101 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "studentsolutions": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "school": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "label": {
+                "type": "string"
+              },
+              "state": {
+                "type": "string"
+              },
+              "organization": {
+                "type": "string"
+              },
+              "path": {
+                "type": "string"
+              },
+              "labelShort": {
+                "type": "string"
+              },
+              "logo": {
+                "type": "json"
+              },
+              "apps": {
+                "type": "json"
+              },
+              "studentsolutions": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "campuses": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "campus": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "label": {
+                "type": "string"
+              },
+              "state": {
+                "type": "string"
+              },
+              "programs": {
+                "type": "json"
+              },
+              "contacts": {
+                "type": "json"
+              },
+              "studentsolutions": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "school": {
+                "type": "string"
+              },
+              "formationTypes": {
+                "type": "string"
               }
             }
           }
         }
       },
-      "NewSchool": {
+      "NewStudentsolution": {
         "properties": {
           "name": {
             "type": "string",
@@ -3291,27 +4976,84 @@
             "type": "string",
             "default": ""
           },
-          "state": {
+          "source": {
             "type": "string",
             "default": "",
             "enum": [
-              "active",
-              "inactive"
+              "all",
+              "school",
+              "group"
             ]
           },
-          "programs": {
+          "enabled": {
+            "type": "boolean",
+            "default": true
+          },
+          "category": {
+            "type": "string",
+            "default": "",
+            "enum": [
+              "borrowingAssistance",
+              "scholarship",
+              "housingAssistance",
+              "tuitionFeeDiscount"
+            ]
+          },
+          "type": {
+            "type": "string",
+            "default": ""
+          },
+          "logo": {
             "type": "json",
             "default": ""
           },
-          "formationTypes": {
+          "description": {
+            "type": "string",
+            "default": ""
+          },
+          "interestRate": {
+            "type": "string",
+            "default": ""
+          },
+          "perks": {
             "type": "json",
             "default": ""
           },
-          "contacts": {
+          "criteria": {
+            "type": "json",
+            "default": ""
+          },
+          "loanMaxAmount": {
+            "type": "integer",
+            "default": ""
+          },
+          "expirationDate": {
+            "type": "string",
+            "default": ""
+          },
+          "additionalInfoLink": {
+            "type": "json",
+            "default": ""
+          },
+          "additionalDocumentLink": {
+            "type": "json",
+            "default": ""
+          },
+          "specialPartnerOrganization": {
+            "type": "json",
+            "default": ""
+          },
+          "agencies": {
             "type": "json",
             "default": ""
           },
           "organization": {
+            "type": "string"
+          },
+          "school": {
+            "type": "string"
+          },
+          "campus": {
             "type": "string"
           }
         }
@@ -3616,10 +5358,16 @@
   },
   "tags": [
     {
+      "name": "Campus"
+    },
+    {
       "name": "Organization"
     },
     {
       "name": "School"
+    },
+    {
+      "name": "Studentsolution"
     },
     {
       "name": "Email"

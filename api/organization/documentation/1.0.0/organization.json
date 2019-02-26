@@ -559,16 +559,104 @@
                 "state": {
                   "type": "string"
                 },
-                "programs": {
+                "organization": {
+                  "type": "string"
+                },
+                "path": {
+                  "type": "string"
+                },
+                "labelShort": {
+                  "type": "string"
+                },
+                "logo": {
                   "type": "json"
                 },
-                "formationTypes": {
+                "apps": {
                   "type": "json"
                 },
-                "contacts": {
+                "studentsolutions": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "campuses": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "studentsolutions": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "label": {
+                  "type": "string"
+                },
+                "source": {
+                  "type": "string"
+                },
+                "enabled": {
+                  "type": "boolean"
+                },
+                "category": {
+                  "type": "string"
+                },
+                "type": {
+                  "type": "string"
+                },
+                "logo": {
+                  "type": "json"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "interestRate": {
+                  "type": "string"
+                },
+                "perks": {
+                  "type": "json"
+                },
+                "criteria": {
+                  "type": "json"
+                },
+                "loanMaxAmount": {
+                  "type": "integer"
+                },
+                "expirationDate": {
+                  "type": "string"
+                },
+                "additionalInfoLink": {
+                  "type": "json"
+                },
+                "additionalDocumentLink": {
+                  "type": "json"
+                },
+                "specialPartnerOrganization": {
+                  "type": "json"
+                },
+                "agencies": {
                   "type": "json"
                 },
                 "organization": {
+                  "type": "string"
+                },
+                "school": {
+                  "type": "string"
+                },
+                "campus": {
                   "type": "string"
                 }
               }
@@ -603,6 +691,12 @@
             "default": ""
           },
           "schools": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "studentsolutions": {
             "type": "array",
             "items": {
               "type": "string"
